@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Main {
@@ -23,17 +25,54 @@ public class Main {
 		return n-1;
 	}
 
+	static int removerElemento (int v[], int numero) {
+		int i=0, j=0, novoV;
+		while (i < 100) {
+			if (v[i] == numero) {
+				novoV = remover(v,i,100);
+				j++;
+			}
+			i++;
+		}
+		return 100-j;
+	}
+
+	static int removerRepeticao (int v[]) {
+		int i=0, j=0, novoV;
+		for (i=0; i<100; i++) {
+			while (j < 100) {
+				if (i != j) {
+					if (v[i] == v[j]) {
+						novoV = remover(v,j,100);
+						j++;
+					}
+				}
+			}
+		}
+		return 100-j;
+	}
+
+	static boolean pertence (int v[], int numero) {
+		for (int i=0; i<100; i++) {
+			if (v[i] == numero) {
+				return true;
+			}
+		}
+		return false;
+	}
+
     public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
 		int entrada = 0;
 		int i;
 		int v[] = new int[100];
-		int novoV;
+		int novoV, numero;
 
 		// System.out.print("CPF: ");
 		String cpf;
-		cpf = input.next();
+		// cpf = input.next();
+		cpf = "977.478.774-98";
 
 		/************************************************************/
 		/* VALIDACAO PARA CPF                                       */
@@ -94,12 +133,13 @@ public class Main {
 
 		/* FIM VALIDACAO PARA CPF                                   */
 		/************************************************************/
-
+		
 		/************************************************************/
 		/* MENU														*/
 
 		while (entrada != 8) {
 			System.out.println("Menu");
+			System.out.println("0. Imprimir colecao.");
 			System.out.println("1. Adicionar um elemento no final da colecao.");
 			System.out.println("2. Adicionar um dado elemento em uma dada posicao.");
 			System.out.println("3. Remover o elemento de uma dada posicao.");
@@ -111,7 +151,7 @@ public class Main {
 
 			entrada = input.nextInt();
 
-			if (entrada < 1 || entrada > 8) {
+			if (entrada < 0 || entrada > 8) {
 				System.out.println("================= Opcao invalida! =================");
 			}
 			if (entrada == 8) {
@@ -123,11 +163,119 @@ public class Main {
 
 			/************************************************************/
 			/* VETOR													*/
-			for (i=0; i<100; i++) {
-				v[i] = i;
-				// System.out.print(v[i] + " ");
+
+			v[0] = 0;
+			v[1] = 1;
+			v[2] = 2;
+			v[3] = 3;
+			v[4] = 15;
+			v[5] = 8;
+			v[6] = 0;
+			v[7] = 12;
+			v[8] = 16;
+			v[9] = 6;
+			v[10] = 5;
+			v[11] = 11;
+			v[12] = 8;
+			v[13] = 10;
+			v[14] = 7;
+			v[15] = 18;
+			v[16] = 2;
+			v[17] = 4;
+			v[18] = 10;
+			v[19] = 11;
+			v[20] = 7;
+			v[21] = 17;
+			v[22] = 12;
+			v[23] = 0;
+			v[24] = 6;
+			v[25] = 17;
+			v[26] = 10;
+			v[27] = 2;
+			v[28] = 4;
+			v[29] = 11;
+			v[30] = 13;
+			v[31] = 18;
+			v[32] = 11;
+			v[33] = 2;
+			v[34] = 2;
+			v[35] = 12;
+			v[36] = 5;
+			v[37] = 6;
+			v[38] = 16;
+			v[39] = 11;
+			v[40] = 15;
+			v[41] = 4;
+			v[42] = 3;
+			v[43] = 11;
+			v[44] = 1;
+			v[45] = 7;
+			v[46] = 11;
+			v[47] = 9;
+			v[48] = 11;
+			v[49] = 15;
+			v[50] = 18;
+			v[51] = 7;
+			v[52] = 8;
+			v[53] = 5;
+			v[54] = 7;
+			v[55] = 6;
+			v[56] = 10;
+			v[57] = 13;
+			v[58] = 11;
+			v[59] = 9;
+			v[60] = 1;
+			v[61] = 9;
+			v[62] = 20;
+			v[63] = 3;
+			v[64] = 5;
+			v[65] = 9;
+			v[66] = 19;
+			v[67] = 15;
+			v[68] = 15;
+			v[69] = 20;
+			v[70] = 10;
+			v[71] = 19;
+			v[72] = 14;
+			v[73] = 3;
+			v[74] = 9;
+			v[75] = 17;
+			v[76] = 2;
+			v[77] = 5;
+			v[78] = 1;
+			v[79] = 12;
+			v[80] = 20;
+			v[81] = 15;
+			v[82] = 19;
+			v[83] = 9;
+			v[84] = 17;
+			v[85] = 4;
+			v[86] = 16;
+			v[87] = 18;
+			v[88] = 10;
+			v[89] = 5;
+			v[90] = 3;
+			v[91] = 12;
+			v[92] = 17;
+			v[93] = 13;
+			v[94] = 7;
+			v[95] = 16;
+			v[96] = 9;
+			v[97] = 5;
+			v[98] = 16;
+			v[99] = 17;
+
+			/************************************************************/
+
+			/************************************************************/
+			/* 0.														*/
+
+			if (entrada == 0) {
+				for (i=0; i<100; i++) {
+					System.out.print(v[i] + " ");
+				}
 			}
-				// System.out.println("");
+
 			/************************************************************/
 
 			/************************************************************/
@@ -153,7 +301,7 @@ public class Main {
 			/************************************************************/
 
 			/************************************************************/
-			/* 3.														*/
+			/* 3. Remover o elemento de uma dada posicao.				*/
 
 			if (entrada == 3) {
 
@@ -167,7 +315,63 @@ public class Main {
 				}
 
 				System.out.println("\n" + novoV);
+
 			}
+			/************************************************************/
+
+			/**************************************************************/
+			/* 4. Remover todas as ocorrencias de um elemento na colecao. */
+
+			if (entrada == 4) {
+
+				System.out.print("Digite um numero a ser removido: ");
+				numero = input.nextInt();
+
+				novoV = removerElemento(v,numero);
+
+				for (i=0; i<novoV; i++) {
+					System.out.print(v[i] + " ");
+				}
+
+				System.out.println("\n" + novoV);
+
+			}
+			/************************************************************/
+
+			/************************************************************/
+			/* 5. Verificar se dado elemento esta contido na colecao. 	*/
+
+			if (entrada == 5) {
+
+				System.out.print("Digite um numero: ");
+				numero = input.nextInt();
+
+				boolean p = pertence(v,numero);
+
+				if (p == true) {
+					System.out.println("Pertence");
+				} else {
+					System.out.println("Nao pertence");
+				}
+			}
+			/************************************************************/
+
+			/************************************************************/
+			/* 7. Remover todas repeticoes da colecao				 	*/
+
+			if (entrada == 7) {
+			
+				novoV = removerRepeticao(v);
+
+				for (i=0; i<100; i++) {
+					System.out.println(v[i] + " ");
+				}
+					System.out.println("\n" + novoV);
+			}
+			/************************************************************/
+
+
+
 
 			/************************************************************/
 		} // FIM DO MENU
