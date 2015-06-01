@@ -69,10 +69,10 @@ public class Main {
 		int v[] = new int[100];
 		int novoV, numero;
 
-		// System.out.print("CPF: ");
+		System.out.print("CPF: ");
 		String cpf;
-		// cpf = input.next();
-		cpf = "977.478.774-98";
+		cpf = input.next();
+		// cpf = "977.478.774-98";
 
 		/************************************************************/
 		/* VALIDACAO PARA CPF                                       */
